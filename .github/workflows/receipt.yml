@@ -1,0 +1,16 @@
+name: Public receipt
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record immutable push receipt
+        run: |
+          echo "Public archive receipt: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"

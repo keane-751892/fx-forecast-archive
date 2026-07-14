@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="按时间连续记录历史汇率研判，期限结束后再公开原记录并与实际结果对照。">
+  <title>研判存档簿</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <p class="edition">睡不着的树懒 · 公开记录</p>
+    <h1>研判存档簿</h1>
+    <p class="standfirst">先封存，后拆封。这里按编号保留事前记录，只有期限结束并经人工复核后，才公开原文和实际结果。</p>
+  </header>
+
+  <main>
+    <section class="summary" aria-labelledby="summary-title">
+      <div>
+        <p class="section-label">记录概览</p>
+        <h2 id="summary-title">每一条都留下编号</h2>
+      </div>
+      <dl id="summary-grid" class="summary-grid" aria-live="polite"></dl>
+    </section>
+
+    <section class="ledger" aria-labelledby="ledger-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">时间顺序</p>
+          <h2 id="ledger-title">公开存档</h2>
+        </div>
+        <p class="legend">页面不以颜色表示判断对错。</p>
+      </div>
+      <div id="record-list" class="record-list" aria-live="polite">
+        <p class="loading">正在读取存档……</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>本页只展示已经留档的历史记录，不构成对未来的判断或操作建议。</p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
