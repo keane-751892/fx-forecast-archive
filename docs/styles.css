@@ -130,6 +130,16 @@ main { padding: 30px 0 56px; }
   font-weight: 700;
 }
 
+.status-stamp-invalid {
+  border-color: var(--ink-soft);
+  color: var(--ink-soft);
+  background: transparent;
+}
+
+.lock-note-invalid {
+  font-weight: 700;
+}
+
 .record-facts {
   display: grid;
   gap: 0;

@@ -7,7 +7,8 @@
     verified: "事前存档已核验",
     review_pending: "期限已结束待人工复核",
     revealed: "已揭示",
-    reviewed: "已复盘"
+    reviewed: "已复盘",
+    receipt_invalid: "事前证明失效"
   });
   const VERIFY_OK = "事前记录核验通过，复盘结果通过一致性检查";
   const VERIFY_FAILED = "核验失败，本记录不可采用";
@@ -497,7 +498,7 @@
     text(identity.appendChild(document.createElement("p")), `${record.archive_id} · ${record.record_kind || "历史记录"}`).className = "record-number";
     text(identity.appendChild(document.createElement("h3")), record.trade_date);
     const status = text(head.appendChild(document.createElement("span")), STATUS_LABELS[record.state] || record.state_label);
-    status.className = "status-stamp";
+    status.className = record.state === "receipt_invalid" ? "status-stamp status-stamp-invalid" : "status-stamp";
 
     const facts = article.appendChild(document.createElement("dl"));
     facts.className = "record-facts";
@@ -517,6 +518,11 @@
       button.className = "open-button";
       button.textContent = "打开原始密封记录";
       button.addEventListener("click", () => openRecord(record, openArea, button));
+    } else if (record.state === "receipt_invalid") {
+      const lock = article.appendChild(document.createElement("p"));
+      lock.className = "lock-note lock-note-invalid";
+      lock.textContent = record.invalidation_note
+        || "本记录的事前公开证明已失效，永久不可用于公开复盘，仅保留编号与密封文件。";
     } else {
       const lock = article.appendChild(document.createElement("p"));
       lock.className = "lock-note";
@@ -537,6 +543,9 @@
       ["缺少编号", summary.missing_count],
       ["已经揭示", summary.revealed_records]
     ];
+    if (typeof summary.invalidated_records === "number" && summary.invalidated_records > 0) {
+      items.push(["证明失效", summary.invalidated_records]);
+    }
     items.forEach(([label, value]) => grid.appendChild(detailItem(label, value)));
   }
 
