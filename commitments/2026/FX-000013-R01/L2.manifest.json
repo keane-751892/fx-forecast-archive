@@ -1,0 +1,1 @@
+{"archive_id":"FX-000013-R01","commitment_algorithm":"SHA-256","commitment_hash":"470d8fce62d1efe1736eb6876290d523a9594ce62c4b8529e4ebfb392edf35ce","commitment_input":"salt||payload_canonical_utf8","encryption_algorithm":"AES-256-GCM","level":"L2","previous_commitment_hash":"6ed0620a228158c3cbc4e13555d728505bd8432181615525c7111e137e81c413","schema_version":"forecast-envelope-v1"}
